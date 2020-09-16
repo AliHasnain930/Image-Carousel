@@ -1,3 +1,4 @@
+const slideContainer = document.querySelector(".automatic");
 const slides = document.querySelectorAll(".slide");
 const indicators = document.querySelectorAll(".indicator");
 const prevBtn = document.querySelector(".previous");
@@ -7,6 +8,17 @@ let slideIndex = 0;
 
 slides[slideIndex].classList.remove("fade");
 showSlide(slideIndex);
+
+if (slideContainer != null) {
+  setInterval(() => {
+    slideIndex += 1;
+    if (slideIndex > slides.length) {
+      slideIndex = 0;
+      slides[slideIndex].classList.add("fade");
+    }
+    showSlide(slideIndex);
+  }, 5000);
+}
 
 prevBtn.addEventListener("click", () => {
   slideIndex -= 1;
